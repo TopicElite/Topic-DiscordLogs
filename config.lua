@@ -34,7 +34,7 @@ Config.webhooks = {
 Config.CustomLog = {
 
 	{-- Example
-		webhook = "https://discord.com/api/webhooks/961719932846997654/i7iZ4G7HVFLDLE20VBGQ0IwsONIUIqBhBBkny2WlaA2eZdQg-FdqjIEw6EqAIdNgvpZl",
+		webhook = "",
 		embedColor = 16777215, -- White (#ffffff)
 		serverEventName = "TestLog",
 	},
