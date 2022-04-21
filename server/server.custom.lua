@@ -1,6 +1,6 @@
 
 
-runResource = function()
+function runResource()
     local allResourcesAreStarted = ""
     for k,v in ipairs(Config.CustomLog) do
         local resourceName = "7DiscordLog:" + v.serverEventName
@@ -13,7 +13,7 @@ runResource = function()
     print("All CustomLogs are loaded: " .. allResourcesAreStarted)
 end
 
-sendDiscordLog = function(embedColor, webhook, title, description)
+function sendDiscordLog(embedColor, webhook, title, description)
 
     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({
         username = Config.username, 
