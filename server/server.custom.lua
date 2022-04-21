@@ -13,7 +13,7 @@ runResource = function()
     print("All CustomLogs are loaded: " .. allResourcesAreStarted)
 end
 
-function sendDiscordLog(embedColor, webhook, title, description)
+sendDiscordLog = function(embedColor, webhook, title, description)
 
     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({
         username = Config.username, 
