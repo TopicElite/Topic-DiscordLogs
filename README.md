@@ -15,7 +15,7 @@ What do I offer?
 If you want to use the logs: Commands, Items, Weapons, Money you have to make changes in es_extended.
 See [es_extended/README.md](https://github.com/TopicElite/Topic-DiscordLogs/tree/main/es_extended).
 
-If you want to use the DrugsLog, I offer a template for esx_drugs, otherwise you can find all events in [esx_drugs/README.md](https://github.com/TopicElite/readme/tree/main/DiscordLogs/esx_drugs).
+If you want to use the DrugsLog, I offer a template for esx_drugs, otherwise you can find all events in [esx_drugs/README.md](https://github.com/TopicElite/Topic-DiscordLogs/tree/main/esx_drugs).
 
 For further questions I am available on my Discord server. 
 
