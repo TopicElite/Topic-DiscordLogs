@@ -17,6 +17,8 @@ See [es_extended/README.md](https://github.com/TopicElite/Topic-DiscordLogs/tree
 
 If you want to use the DrugsLog, I offer a template for esx_drugs, otherwise you can find all events in [esx_drugs/README.md](https://github.com/TopicElite/Topic-DiscordLogs/tree/main/esx_drugs).
 
+If you want to use the AmbulanceLog, I offer a template for [esx_ambulancejob](https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_ambulancejob).
+
 For further questions I am available on my Discord server. 
 
 Bugs or requests are welcome to be reported via my [Discord Server](https://discord.gg/TymDT77Fvd)

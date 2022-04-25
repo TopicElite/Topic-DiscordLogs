@@ -19,6 +19,8 @@ Config.ActionColors = { -- https://www.colorhexa.com/ -> decimal value
 	['Starting'] = 16747264, -- Orange (#ff8b00)
 	['Start'] = 65280, -- Green (#00ff00)
 	['Stop'] = 16711680, -- Red (#ff0000)
+	['Revive'] = 65280, -- Green (#00ff00)
+	['Heal'] = 16747264, -- Orange (#ff8b00)
 	['Nothing'] = 16777215, -- White (#ffffff)
 }
 
@@ -29,6 +31,7 @@ Config.webhooks = {
 	money = "",
 	drugs = "",
 	resource = "",
+	ambulance = "",
 }
 
 Config.CustomLog = {
