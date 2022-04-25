@@ -9,6 +9,8 @@ Locales['de'] = {
     ['Starting'] = 'Startet',
     ['Start'] = 'Gestartet',
     ['Stop'] = 'Stopp',
+    ['Revive'] = 'Wiederbeleben',
+    ['Heal'] = 'Heilen',
     
     ------ Resource Log ------
     ['resourcelog_title'] = '%s',
@@ -36,4 +38,8 @@ Locales['de'] = {
     ------ Drug Log ------
     ['druglog_description_sell'] = '%s: %sx %s (%s) für %s$ Schwarzgeld',
     ['druglog_description'] = '%s: %sx %s (%s)',
+
+    ------ Ambulance Log ------
+    ['ambulancelog_revive_for_money'] = '%s: %s für %s',
+    ['ambulancelog_description'] = '%s: %s',
 }

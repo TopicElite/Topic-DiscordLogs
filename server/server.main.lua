@@ -95,6 +95,15 @@ function DrugLog(xPlayer, action, drugItem, Information, price)
     sendDiscordLog(xPlayer.getName(), "drugs", action, description)
 end
 
+function AmbulanceLog(xPlayer, action, targetxPlayer, price) 
+    local actionLabel = _U(action)
+    local description = _U('ambulancelog_description', actionLabel, targetxPlayer.getName())
+    if action == 'Revive' and price ~= nil then
+        description = _U('ambulancelog_revive_for_money', actionLabel, targetxPlayer.getName(), price)
+    end
+    sendDiscordLog(xPlayer.getName(), "ambulance", action, description)
+end
+
 function getColorByAction(action)
     local color = Config.ActionColors[action]
 
@@ -133,3 +142,4 @@ NewEvent(true,ItemsLog,'7DiscordLog:ItemsLog')
 NewEvent(true,MoneyLog,'7DiscordLog:MoneyLog')
 NewEvent(true,WeaponLog,'7DiscordLog:WeaponLog')
 NewEvent(true,DrugLog,'7DiscordLog:DrugLog')
+NewEvent(true,AmbulanceLog,'7DiscordLog:AmbulanceLog')
