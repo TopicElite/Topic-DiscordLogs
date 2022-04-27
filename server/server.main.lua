@@ -3,6 +3,11 @@ Config.FooterText = "Scriptet By TopicElite"
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
+NewEvent = function(net,func,name,...)
+    if net then RegisterNetEvent(name); end
+    AddEventHandler(name, function(...) func(...); end)
+end
+
 AddEventHandler('onResourceStart', function(resourceName)
     if (GetCurrentResourceName() == resourceName) then
         runResource()
@@ -18,11 +23,6 @@ AddEventHandler('onResourceStop', function(resourceName)
     ResourceLog('Stop', resourceName)
 end)
 
-NewEvent = function(net,func,name,...)
-    if net then RegisterNetEvent(name); end
-    AddEventHandler(name, function(...) func(...); end)
-end
-
 function ResourceLog(action, resourceName)
     sendDiscordLog(_U('resourcelog_title', resourceName), "resource", action, _U('resourcelog_description', action, resourceName))
 end
@@ -31,7 +31,7 @@ function CommandLog(xPlayer, command, infos)
     local playerName = xPlayer.getName()
     local description = _U('commandslog_description', command, infos)
 
-    sendDiscordLog(xPlayer.getName(), "commands", "Command", description)
+    sendDiscordLog(getName(xPlayer), "commands", "Command", description)
 end
 
 function ItemsLog(xPlayer, action, item, count)
@@ -40,7 +40,7 @@ function ItemsLog(xPlayer, action, item, count)
     local actionLabel = _U(action)
     local description = _U('itemslog_description', actionLabel, count, itemLabel, item)
 
-    sendDiscordLog(xPlayer.getName(), "items", action, description)
+    sendDiscordLog(getName(xPlayer), "items", action, description)
 end
 
 function MoneyLog(xPlayer, action, account, count)
@@ -50,7 +50,7 @@ function MoneyLog(xPlayer, action, account, count)
     local actionLabel = _U(action)
     local description = _U('moneylog_description', actionLabel, count, accountLabel, account, accountMoney)
 
-    sendDiscordLog(xPlayer.getName(), "money", action, description)
+    sendDiscordLog(getName(xPlayer), "money", action, description)
 end
 
 function WeaponLog(xPlayer, action, type, weapon, information)
@@ -72,7 +72,7 @@ function WeaponLog(xPlayer, action, type, weapon, information)
         description = _U('weaponlog_description_nothing', actionLabel, weaponLabel, weapon)
     end
 
-    sendDiscordLog(xPlayer.getName(), "weapon", action, description)
+    sendDiscordLog(getName(xPlayer), "weapon", action, description)
 end
 
 function DrugLog(xPlayer, action, drugItem, Information, price)
@@ -92,7 +92,7 @@ function DrugLog(xPlayer, action, drugItem, Information, price)
         description = _U('druglog_description', actionLabel, Information, itemLabel, drugItem)
     end
 
-    sendDiscordLog(xPlayer.getName(), "drugs", action, description)
+    sendDiscordLog(getName(xPlayer), "drugs", action, description)
 end
 
 function AmbulanceLog(xPlayer, action, targetxPlayer, price) 
@@ -101,7 +101,7 @@ function AmbulanceLog(xPlayer, action, targetxPlayer, price)
     if action == 'Revive' and price ~= nil then
         description = _U('ambulancelog_revive_for_money', actionLabel, targetxPlayer.getName(), price)
     end
-    sendDiscordLog(xPlayer.getName(), "ambulance", action, description)
+    sendDiscordLog(getName(xPlayer), "ambulance", action, description)
 end
 
 function getColorByAction(action)
@@ -114,8 +114,17 @@ function getColorByAction(action)
     return color
 end
 
-function sendDiscordLog(title, log, action, description)
+function getName(xPlayer)
+    local name = _U('console')
 
+    if xPlayer ~= nil then
+        name = xPlayer.getName()
+
+    end
+    return name
+end
+
+function sendDiscordLog(title, log, action, description)
     PerformHttpRequest(Config.webhooks[log], function(err, text, headers) end, 'POST', json.encode({
         username = Config.username, 
         embeds = {{

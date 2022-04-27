@@ -1,4 +1,6 @@
 Locales['en'] = {
+    ['console'] = 'Console',
+
     ------ Actions ------
     ['Add'] = 'Add',
     ['Remove'] = 'Remove',
