@@ -8,11 +8,15 @@ Locales['en'] = {
     ['Sell'] = 'Sell',
     ['Harvest'] = 'Harvest',
     ['Processed'] = 'Processed',
+    ['Wash'] = 'Wash',
     ['Starting'] = 'Starts',
     ['Start'] = 'Started',
     ['Stop'] = 'Stop',
     ['Revive'] = 'Revive',
     ['Heal'] = 'Heal',
+    ['Hire'] = 'Hire',
+    ['Promote'] = 'Promote',
+    ['Fire'] = 'Fire',
     
     ------ Resource Log ------
     ['resourcelog_title'] = '%s',
@@ -28,7 +32,7 @@ Locales['en'] = {
     ['money'] = 'Cash',
     ['black_money'] = 'Black money',
     ['bank'] = 'Bank',
-    ['moneylog_description'] = '%s: %s$ %s (%s) | Current state: %s$',
+    ['moneylog_description'] = '%s: $%s %s (%s) | Current state: $%s',
 
     ------ Weapon Log ------
     ['weaponlog_description_weapon'] = '%s: %s (%s) with %sx Ammo',
@@ -38,10 +42,13 @@ Locales['en'] = {
     ['weaponlog_description_nothing'] = '%s: %s (%s)',
 
     ------ Drug Log ------
-    ['druglog_description_sell'] = '%s: %sx %s (%s) for %s$ Black money',
+    ['druglog_description_sell'] = '%s: %sx %s (%s) for $%s Black money',
     ['druglog_description'] = '%s: %sx %s (%s)',
 
     ------ Ambulance Log ------
     ['ambulancelog_revive_for_money'] = '%s: %s für %s',
     ['ambulancelog_description'] = '%s: %s',
+
+    ------ Society Log ------
+    ['societylog_description'] = '%s | %s: $%s',
 }

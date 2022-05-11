@@ -16,11 +16,15 @@ Config.ActionColors = { -- https://www.colorhexa.com/ -> decimal value
 	['Sell'] = 65484, -- Turquoise (#00ffcc)
 	['Harvest'] = 65280, -- Green (#00ff00)
 	['Processed'] = 16747264, -- Orange (#ff8b00)
+	['Wash'] = 16747264, -- Orange (#ff8b00)
 	['Starting'] = 16747264, -- Orange (#ff8b00)
 	['Start'] = 65280, -- Green (#00ff00)
 	['Stop'] = 16711680, -- Red (#ff0000)
 	['Revive'] = 65280, -- Green (#00ff00)
 	['Heal'] = 16747264, -- Orange (#ff8b00)
+	['Hire'] = 65280, -- Green (#00ff00
+	['Promote'] = 16747264, -- Orange (#ff8b00))
+	['Fire'] = 16711680, -- Red (#ff0000)
 	['Nothing'] = 16777215, -- White (#ffffff)
 }
 
@@ -32,6 +36,7 @@ Config.webhooks = {
 	drugs = "",
 	resource = "",
 	ambulance = "",
+	society = "",
 }
 
 Config.CustomLog = {
@@ -46,4 +51,4 @@ Config.CustomLog = {
 -- Example
 RegisterCommand("testLog", function(source , args , rawCommand)
     TriggerEvent('7DiscordLog:TestLog', "Test Title",  "Test Description")
-end, true) 
+end, true)

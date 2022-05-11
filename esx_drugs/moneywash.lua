@@ -6,7 +6,7 @@ AddEventHandler('esx_illegal:Wash', function()
 	xPlayer.removeAccountMoney('black_money', ammount)
 	
 	xPlayer.addMoney(ammount)
-	TriggerEvent('7DiscordLog:DrugLog', xPlayer, 'Processed', 'black_money', ammount, null)
+	TriggerEvent('7DiscordLog:DrugLog', xPlayer, 'Wash', 'black_money', ammount, null)
 	TriggerClientEvent('esx:showNotification', source, _U('moneywash_washed', ammount))
 end)
 

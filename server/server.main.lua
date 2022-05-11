@@ -98,10 +98,23 @@ end
 function AmbulanceLog(xPlayer, action, targetxPlayer, price) 
     local actionLabel = _U(action)
     local description = _U('ambulancelog_description', actionLabel, targetxPlayer.getName())
+
     if action == 'Revive' and price ~= nil then
         description = _U('ambulancelog_revive_for_money', actionLabel, targetxPlayer.getName(), price)
     end
+
     sendDiscordLog(getName(xPlayer), "ambulance", action, description)
+end
+
+function SocietyLog(xPlayer, action, societyName, Information)
+    local actionLabel = _U(action)
+    local description = _U('societylog_description', societyName, actionLabel, Information)
+
+    if action == 'Hire' or action == 'Promote' or action == 'Fire' then
+        description = _U('societylog_description', societyName, actionLabel, getName(Information))
+    end
+
+    sendDiscordLog(getName(xPlayer), "society", action, description)
 end
 
 function getColorByAction(action)
@@ -121,6 +134,7 @@ function getName(xPlayer)
         name = xPlayer.getName()
 
     end
+    
     return name
 end
 
@@ -152,3 +166,4 @@ NewEvent(true,MoneyLog,'7DiscordLog:MoneyLog')
 NewEvent(true,WeaponLog,'7DiscordLog:WeaponLog')
 NewEvent(true,DrugLog,'7DiscordLog:DrugLog')
 NewEvent(true,AmbulanceLog,'7DiscordLog:AmbulanceLog')
+NewEvent(true,SocietyLog,'7DiscordLog:SocietyLog')
