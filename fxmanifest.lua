@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game { 'gta5' }
 lua54 'yes'
 
-version '1.0.1'
+version '1.0.2'
 description 'Commands Logs'  
 author 'TopicElite#0070'
 
