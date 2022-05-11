@@ -9,7 +9,7 @@ What do I offer?
 - Change requests / ideas are welcome
 - bug fixes
 - Will be updated
-- Log for: Commands | Items | Weapons | Money | Drugs | Resources 
+- Log for: Commands | Items | Weapons | Money | Drugs | Resources | Ambulance | Society
 - Create your own log events.
 
 If you want to use the logs: Commands, Items, Weapons, Money you have to make changes in es_extended.
