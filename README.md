@@ -19,6 +19,8 @@ If you want to use the DrugsLog, I offer a template for esx_drugs, otherwise you
 
 If you want to use the AmbulanceLog, I offer a template for [esx_ambulancejob](https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_ambulancejob).
 
+If you want to use the SocietyLog, I offer a template for [esx_society](https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_society).
+
 For further questions I am available on my Discord server. 
 
 Bugs or requests are welcome to be reported via my [Discord Server](https://discord.gg/TymDT77Fvd)
