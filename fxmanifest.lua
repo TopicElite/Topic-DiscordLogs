@@ -3,7 +3,7 @@ game { 'gta5' }
 lua54 'yes'
 
 version '1.0.2'
-description 'Commands Logs'  
+description 'Discord Logs'  
 author 'TopicElite#0070'
 
 escrow_ignore {
@@ -11,7 +11,8 @@ escrow_ignore {
     'config.lua',
     'README.md',
     'esx_drugs/*',
-    'es_extended/*'
+    'es_extended/*',
+    'esx_society/*'
 }
 
 shared_scripts {
