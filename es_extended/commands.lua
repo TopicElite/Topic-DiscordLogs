@@ -12,7 +12,7 @@ ESX.RegisterCommand('setjob', 'admin', function(xPlayer, args, showError)
 	else
 		showError(_U('command_setjob_invalid'))
 	end
-	TriggerEvent('7Logs:CommandLog', xPlayer, '/setjob', args.playerId.getName() .. " " .. args.job .. " " .. args.grade)
+	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/setjob', args.playerId.getName() .. " " .. args.job .. " " .. args.grade)
 end, true, {help = _U('command_setjob'), validate = true, arguments = {
 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
 	{name = 'job', help = _U('command_setjob_job'), type = 'string'},
@@ -21,14 +21,14 @@ end, true, {help = _U('command_setjob'), validate = true, arguments = {
 
 ESX.RegisterCommand('car', 'admin', function(xPlayer, args, showError)
 	xPlayer.triggerEvent('esx:spawnVehicle', args.car)
-	TriggerEvent('7Logs:CommandLog', xPlayer, '/car', args.car)
+	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/car', args.car)
 end, false, {help = _U('command_car'), validate = false, arguments = {
 	{name = 'car', help = _U('command_car_car'), type = 'any'}
 }})
 
 ESX.RegisterCommand({'cardel', 'dv'}, 'admin', function(xPlayer, args, showError)
 	xPlayer.triggerEvent('esx:deleteVehicle', args.radius)
-	TriggerEvent('7Logs:CommandLog', xPlayer, '/cardel', "")
+	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/cardel', "")
 end, false, {help = _U('command_cardel'), validate = false, arguments = {
 	{name = 'radius', help = _U('command_cardel_radius'), type = 'any'}
 }})
@@ -39,7 +39,7 @@ ESX.RegisterCommand('setaccountmoney', 'admin', function(xPlayer, args, showErro
 	else
 		showError(_U('command_giveaccountmoney_invalid'))
 	end
-	TriggerEvent('7Logs:CommandLog', xPlayer, '/setaccountmoney', args.playerId.getName() .. " " .. args.account .. " " .. args.amount)
+	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/setaccountmoney', args.playerId.getName() .. " " .. args.account .. " " .. args.amount)
 end, true, {help = _U('command_setaccountmoney'), validate = true, arguments = {
 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
 	{name = 'account', help = _U('command_giveaccountmoney_account'), type = 'string'},
@@ -52,7 +52,7 @@ ESX.RegisterCommand('giveaccountmoney', 'admin', function(xPlayer, args, showErr
 	else
 		showError(_U('command_giveaccountmoney_invalid'))
 	end
-	TriggerEvent('7Logs:CommandLog', xPlayer, '/giveaccountmoney', args.playerId.getName() .. " " .. args.account .. " " .. args.amount)
+	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/giveaccountmoney', args.playerId.getName() .. " " .. args.account .. " " .. args.amount)
 end, true, {help = _U('command_giveaccountmoney'), validate = true, arguments = {
 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
 	{name = 'account', help = _U('command_giveaccountmoney_account'), type = 'string'},
@@ -61,7 +61,7 @@ end, true, {help = _U('command_giveaccountmoney'), validate = true, arguments = 
 
 ESX.RegisterCommand('giveitem', 'admin', function(xPlayer, args, showError)
 	args.playerId.addInventoryItem(args.item, args.count)
-	TriggerEvent('7Logs:CommandLog', xPlayer, '/giveitem', args.playerId.getName() .. " " .. args.item .. " " .. args.count)
+	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/giveitem', args.playerId.getName() .. " " .. args.item .. " " .. args.count)
 end, true, {help = _U('command_giveitem'), validate = true, arguments = {
 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
 	{name = 'item', help = _U('command_giveitem_item'), type = 'item'},
@@ -74,7 +74,7 @@ ESX.RegisterCommand('giveweapon', 'admin', function(xPlayer, args, showError)
 	else
 		xPlayer.addWeapon(args.weapon, args.ammo)
 	end
-	TriggerEvent('7Logs:CommandLog', xPlayer, '/giveweapon', args.playerId.getName() .. " " .. args.weapon .. " " .. args.ammo)
+	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/giveweapon', args.playerId.getName() .. " " .. args.weapon .. " " .. args.ammo)
 end, true, {help = _U('command_giveweapon'), validate = true, arguments = {
 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
 	{name = 'weapon', help = _U('command_giveweapon_weapon'), type = 'weapon'},
@@ -97,7 +97,7 @@ ESX.RegisterCommand('giveweaponcomponent', 'admin', function(xPlayer, args, show
 	else
 		showError(_U('command_giveweaponcomponent_missingweapon'))
 	end
-	TriggerEvent('7Logs:CommandLog', xPlayer, '/giveweaponcomponent', args.playerId.getName() .. " " .. args.weaponName .. " " .. args.componentName)
+	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/giveweaponcomponent', args.playerId.getName() .. " " .. args.weaponName .. " " .. args.componentName)
 end, true, {help = _U('command_giveweaponcomponent'), validate = true, arguments = {
 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
 	{name = 'weaponName', help = _U('command_giveweapon_weapon'), type = 'weapon'},
@@ -132,7 +132,7 @@ end, true, {help = _U('command_clearloadout'), validate = true, arguments = {
 
 ESX.RegisterCommand('setgroup', 'admin', function(xPlayer, args, showError)
 	args.playerId.setGroup(args.group)
-	TriggerEvent('7Logs:CommandLog', xPlayer, '/setgroup', args.playerId.getName() .. " " .. args.group)
+	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/setgroup', args.playerId.getName() .. " " .. args.group)
 end, true, {help = _U('command_setgroup'), validate = true, arguments = {
 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
 	{name = 'group', help = _U('command_setgroup_group'), type = 'string'},
