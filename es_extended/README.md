@@ -8,54 +8,54 @@ Otherwise you have to maintain it on your own.
 
 ***TEMPLATE:***
 ```lua
-    TriggerEvent('7DiscordLogCommandLog', xPlayer, '/COMMAND', 'INFORMATION BEHIND COMMANDS')
+    TriggerEvent('7DiscordLog:CommandLog', xPlayer, '/COMMAND', 'INFORMATION BEHIND COMMANDS')
 ```
 
 
 **Command Log:**
 *"setjob":*
 ```lua
-    TriggerEvent('7DiscordLogCommandLog', xPlayer, '/setjob', args.playerId.getName() .. " " .. args.job .. " " .. args.grade)
+    TriggerEvent('7DiscordLog:CommandLog', xPlayer, '/setjob', args.playerId.getName() .. " " .. args.job .. " " .. args.grade)
 ```
 
 *"car":*
 ```lua
-    TriggerEvent('7DiscordLogCommandLog', xPlayer, '/car', args.car)
+    TriggerEvent('7DiscordLog:CommandLog', xPlayer, '/car', args.car)
 ```
 
 *"cardel, dv":*
 ```lua
-	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/cardel', "")
+	TriggerEvent('7DiscordLog:CommandLog', xPlayer, '/cardel', "")
 ```
 
 *"setaccountmoney":*
 ```lua
-	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/setaccountmoney', args.playerId.getName() .. " " .. args.account .. " " .. args.amount)
+	TriggerEvent('7DiscordLog:CommandLog', xPlayer, '/setaccountmoney', args.playerId.getName() .. " " .. args.account .. " " .. args.amount)
 ```
 
 *"giveaccountmoney":*
 ```lua
-	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/giveaccountmoney', args.playerId.getName() .. " " .. args.account .. " " .. args.amount)
+	TriggerEvent('7DiscordLog:CommandLog', xPlayer, '/giveaccountmoney', args.playerId.getName() .. " " .. args.account .. " " .. args.amount)
 ```
 
 *"giveitem":*
 ```lua
-	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/giveitem', args.playerId.getName() .. " " .. args.item .. " " .. args.count)
+	TriggerEvent('7DiscordLog:CommandLog', xPlayer, '/giveitem', args.playerId.getName() .. " " .. args.item .. " " .. args.count)
 ```
 
 *"giveweapon":*
 ```lua
-	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/giveweapon', args.playerId.getName() .. " " .. args.weapon .. " " .. args.ammo)
+	TriggerEvent('7DiscordLog:CommandLog', xPlayer, '/giveweapon', args.playerId.getName() .. " " .. args.weapon .. " " .. args.ammo)
 ```
 
 *"giveweaponcomponent":*
 ```lua
-	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/giveweaponcomponent', args.playerId.getName() .. " " .. args.weaponName .. " " .. args.componentName)
+	TriggerEvent('7DiscordLog:CommandLog', xPlayer, '/giveweaponcomponent', args.playerId.getName() .. " " .. args.weaponName .. " " .. args.componentName)
 ```
 
 *"setgroup":*
 ```lua
-	TriggerEvent('7DiscordLogCommandLog', xPlayer, '/setgroup', args.playerId.getName() .. " " .. args.group)
+	TriggerEvent('7DiscordLog:CommandLog', xPlayer, '/setgroup', args.playerId.getName() .. " " .. args.group)
 ```
 
 
