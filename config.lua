@@ -55,3 +55,5 @@ Config.CustomLog = {
 RegisterCommand("testLog", function(source , args , rawCommand)
     TriggerEvent('7DiscordLog:TestLog', "Test Title",  "Test Description")
 end, true)
+
+
