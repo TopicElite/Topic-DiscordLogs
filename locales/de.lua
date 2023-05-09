@@ -49,6 +49,11 @@ Locales['de'] = {
     ['ambulancelog_revive_for_money'] = '%s: %s für %s',
     ['ambulancelog_description'] = '%s: %s',
 
+    ------ AfterRPDeath Log ------
+    ['afterrpdeathlog_description'] = '**Bargeld:** %s\n**Schwarzgeld:** %s\n**Waffen:** %s\n**Items:** %s\n',
+
     ------ Society Log ------
     ['societylog_description'] = '%s | %s: $%s',
+
+    
 }

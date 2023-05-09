@@ -28,6 +28,8 @@ Config.ActionColors = { -- https://www.colorhexa.com/ -> decimal value
 	['Nothing'] = 16777215, -- White (#ffffff)
 }
 
+Config.MinMoneyAmount = 0 -- Sends a money log only when this number is exceeded
+
 Config.webhooks = {
 	commands = "",
 	items = "",
@@ -37,6 +39,7 @@ Config.webhooks = {
 	resource = "",
 	ambulance = "",
 	society = "",
+	afterRPDeath = "",
 }
 
 Config.CustomLog = {

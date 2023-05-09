@@ -31,7 +31,7 @@ function CommandLog(xPlayer, command, infos)
     local playerName = xPlayer.getName()
     local description = _U('commandslog_description', command, infos)
 
-    sendDiscordLog(getName(xPlayer), "commands", "Command", description)
+    sendDiscordLogxPlayer(getName(xPlayer), "commands", "Command", description, xPlayer)
 end
 
 function ItemsLog(xPlayer, action, item, count)
@@ -40,17 +40,19 @@ function ItemsLog(xPlayer, action, item, count)
     local actionLabel = _U(action)
     local description = _U('itemslog_description', actionLabel, count, itemLabel, item)
 
-    sendDiscordLog(getName(xPlayer), "items", action, description)
+    sendDiscordLogxPlayer(getName(xPlayer), "items", action, description, xPlayer)
 end
 
 function MoneyLog(xPlayer, action, account, count)
-    local playerName = xPlayer.getName()
-    local accountLabel = _U(account)
-    local accountMoney = xPlayer.getAccount(account).money
-    local actionLabel = _U(action)
-    local description = _U('moneylog_description', actionLabel, count, accountLabel, account, accountMoney)
+    if Config.MinMoneyAmount <= count then
+        local playerName = xPlayer.getName()
+        local accountLabel = _U(account)
+        local accountMoney = xPlayer.getAccount(account).money
+        local actionLabel = _U(action)
+        local description = _U('moneylog_description', actionLabel, count, accountLabel, account, accountMoney)
 
-    sendDiscordLog(getName(xPlayer), "money", action, description)
+        sendDiscordLogxPlayer(getName(xPlayer), "money", action, description, xPlayer)
+    end
 end
 
 function WeaponLog(xPlayer, action, type, weapon, information)
@@ -72,7 +74,7 @@ function WeaponLog(xPlayer, action, type, weapon, information)
         description = _U('weaponlog_description_nothing', actionLabel, weaponLabel, weapon)
     end
 
-    sendDiscordLog(getName(xPlayer), "weapon", action, description)
+    sendDiscordLogxPlayer(getName(xPlayer), "weapon", action, description, xPlayer)
 end
 
 function DrugLog(xPlayer, action, drugItem, Information, price)
@@ -92,7 +94,7 @@ function DrugLog(xPlayer, action, drugItem, Information, price)
         description = _U('druglog_description', actionLabel, Information, itemLabel, drugItem)
     end
 
-    sendDiscordLog(getName(xPlayer), "drugs", action, description)
+    sendDiscordLogxPlayer(getName(xPlayer), "drugs", action, description, xPlayer)
 end
 
 function AmbulanceLog(xPlayer, action, targetxPlayer, price) 
@@ -103,7 +105,13 @@ function AmbulanceLog(xPlayer, action, targetxPlayer, price)
         description = _U('ambulancelog_revive_for_money', actionLabel, targetxPlayer.getName(), price)
     end
 
-    sendDiscordLog(getName(xPlayer), "ambulance", action, description)
+    sendDiscordLogxPlayer(getName(xPlayer), "ambulance", action, description, xPlayer)
+end
+
+function AfterRpDeathLog(xPlayer, money, blackmoney, weaponlist, itemlist)
+
+    local description = _U("afterrpdeathlog_description", money, blackmoney, weaponlist, itemlist)
+    sendDiscordLogxPlayer(getName(xPlayer), "afterRPDeath", "Remove", description, xPlayer)    
 end
 
 function SocietyLog(xPlayer, action, societyName, Information)
@@ -114,7 +122,7 @@ function SocietyLog(xPlayer, action, societyName, Information)
         description = _U('societylog_description', societyName, actionLabel, getName(Information))
     end
 
-    sendDiscordLog(getName(xPlayer), "society", action, description)
+    sendDiscordLogxPlayer(getName(xPlayer), "society", action, description, xPlayer)
 end
 
 function getColorByAction(action)
@@ -160,6 +168,87 @@ function sendDiscordLog(title, log, action, description)
     })
 end
 
+function sendDiscordLogxPlayer(title, log, action, description, xPlayer)
+    local source = xPlayer.source
+    local playerDetails = GetPlayerDetails(source)
+    PerformHttpRequest(Config.webhooks[log], function(err, text, headers) end, 'POST', json.encode({
+        username = Config.username, 
+        embeds = {{
+            ["color"] = getColorByAction(action), 
+            ["author"] = {
+                ["name"] = Config.communtiyName,
+                ["icon_url"] = Config.communtiyLogo
+            },
+            ["title"] = tostring(title),
+            ["description"] = tostring(description),
+            ["footer"] = {
+                ["text"] = Config.FooterText.." • "..os.date("%x %X %p"),
+                ["icon_url"] = Config.FooterIcon,
+            },
+            ["fields"] = {
+                {
+                    ["name"] = "Player Details: ",
+                    ["value"] = playerDetails,
+                    ["inline"] = false
+                },
+                {
+                    ["name"] = "Player Identifier:",
+                    ["value"] = xPlayer.identifier,
+                    ["inline"] = false
+                }
+            },
+        }}, 
+        avatar_url = Config.avatar
+    }), { 
+        ['Content-Type'] = 'application/json' 
+    })
+end
+
+function GetPlayerDetails(src)
+	local player_id = src
+	local ids = ExtractIdentifiers(player_id)
+    if ids.discord ~= "" then _discordID ="\n**Discord ID:** <@" ..ids.discord:gsub("discord:", "")..">" else _discordID = "\n**Discord ID:** N/A" end
+    if ids.steam ~= "" then _steamID ="\n**Steam ID:** " ..ids.steam.."" else _steamID = "\n**Steam ID:** N/A" end
+    if ids.steam ~= "" then _steamURL ="\nhttps://steamcommunity.com/profiles/" ..tonumber(ids.steam:gsub("steam:", ""),16).."" else _steamURL = "\n**Steam URL:** N/A" end
+    if ids.license ~= "" then _license ="\n**License:** " ..ids.license else _license = "\n**License :** N/A" end
+    if ids.ip ~= "" then _ip ="\n**IP:** " ..ids.ip else _ip = "\n**IP :** N/A" end
+    _playerID ="\n**Player ID:** " ..player_id..""
+
+
+	return _playerID ..''.. _discordID..''.._steamID..''.._steamURL..''.._license..''.._ip
+end
+
+function ExtractIdentifiers(src)
+    local identifiers = {
+        steam = "",
+        ip = "",
+        discord = "",
+        license = "",
+        xbl = "",
+        live = ""
+    }
+
+    for i = 0, GetNumPlayerIdentifiers(src) - 1 do
+        local id = GetPlayerIdentifier(src, i)
+
+        if string.find(id, "steam") then
+            identifiers.steam = id
+        elseif string.find(id, "ip") then
+            identifiers.ip = id
+        elseif string.find(id, "discord") then
+            identifiers.discord = id
+        elseif string.find(id, "license") then
+            identifiers.license = id
+        elseif string.find(id, "xbl") then
+            identifiers.xbl = id
+        elseif string.find(id, "live") then
+            identifiers.live = id
+        end
+    end
+
+    return identifiers
+end
+
 NewEvent(true,CommandLog,'7DiscordLog:CommandLog')
 NewEvent(true,ItemsLog,'7DiscordLog:ItemsLog')
 NewEvent(true,MoneyLog,'7DiscordLog:MoneyLog')
@@ -167,3 +256,4 @@ NewEvent(true,WeaponLog,'7DiscordLog:WeaponLog')
 NewEvent(true,DrugLog,'7DiscordLog:DrugLog')
 NewEvent(true,AmbulanceLog,'7DiscordLog:AmbulanceLog')
 NewEvent(true,SocietyLog,'7DiscordLog:SocietyLog')
+NewEvent(true,AfterRpDeathLog,'7DiscordLog:AfterRpDeathLog')
